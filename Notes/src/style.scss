@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+$main-font: "Indie Flower", cursive;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    font-family: $main-font;
+    background-color: rgba(0,0,0,0.6);
+    padding: 20px 30px;
+    border-radius: 40px;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 15px;
+    row-gap: 10px;
+}
+
+.title {
+    text-align: center;
+    font-size: 44px;
+    color: #fff;
+    grid-column: span 3;
+}
+
+.buttons-box {
+    grid-column: span 3;
+    justify-self: center;
+    margin-bottom: 30px;
+}
+
+.button {
+    width: 150px;
+    padding: 20px 10px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-right: 20px;
+    font-family: $main-font;
+    font-size: 18px;
+
+    &:active {
+        transform: translateY(5px);
+        box-shadow: none;
+    }
+
+    &--add {
+        background-color: #70ad5e;
+        box-shadow: 0 5px #508142;
+
+        &:hover {
+            background-color: #98c48b;
+        }
+    }
+
+    &--remove {
+        background-color: #d97065;
+        box-shadow: 0 5px #d15144;
+
+        &:hover {
+            background-color: #e3958d;
+        }
+    }
+}
+
+.note {
+    max-width: 350px;
+    border-radius: 12px;
+    background-color: #efcc6c;
+    padding: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        text-align: center;
+        font-size: 26px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgba(0,0,0,0.4);
+        outline: none;
+        flex: 0 0 40px;
+    }
+
+    &__text {
+        font-size: 22px;
+        outline: none;
+        flex: 0 1 100%;
+    }
+
+    &__button {
+        padding: 5px 10px;
+        background-color: #d35b4e;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #da7469;
+        }
+
+        &:active {
+            transform: translate(1px, 2px);
+        }
+    }
+}
