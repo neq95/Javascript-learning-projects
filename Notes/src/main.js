@@ -1,5 +1,5 @@
 import "./style.scss";
-import {Note} from "./js/Note"
+import NoteManager from "./js/NoteManager";
 
 let app = document.querySelector(".container");
 let addButton = app.querySelector(".button--add");
@@ -8,12 +8,12 @@ let removeButton = app.querySelector(".button--remove");
 addButton.addEventListener("click", addNote);
 removeButton.addEventListener("click", removeNotes);
 
+let noteManager = new NoteManager();
+
 function addNote() {
-    let note = new Note();
-    note.makeNote();
+    noteManager.addNote();
 }
 
 function removeNotes() {
-    let notes = document.querySelectorAll(".note");
-    notes.forEach(note => note.remove());
+    noteManager.removeNotes();
 }

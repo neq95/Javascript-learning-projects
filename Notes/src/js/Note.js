@@ -1,7 +1,8 @@
-export class Note {
-    constructor(title = "", text = "") {
-        this.title = title;
-        this.text = text;
+export default class Note {
+    constructor(id) {
+        this.title = "";
+        this.text = "";
+        this.id = id;
     }
 
     makeNote() {
@@ -14,33 +15,12 @@ export class Note {
         <p class="note__text" contenteditable="true">${this.text}</p>
         <button class="note__button" type="button">x</button>
         `
-
         container.append(note);
-        addEvents(this, note);
-        addToLocalStorage(this);
+
+        return note;
     }
-}
 
-function addEvents(thisArg, note) {
-    console.log(thisArg);
-    let button = note.querySelector(".note__button");
-    button.addEventListener("click", () => {
-        note.remove();
-    });
+    removeNote() {
 
-    let title = note.querySelector(".note__title");
-    title.addEventListener("blur", () => {
-        thisArg.title = title.textContent;
-        if(thisArg.title) addToLocalStorage(thisArg);
-    })
-
-    let text = note.querySelector(".note__text");
-    text.addEventListener("blur", () => {
-        thisArg.text = text.textContent;
-        if(thisArg.text) addToLocalStorage(thisArg);
-    })
-}
-
-function addToLocalStorage(thisArg) {
-    localStorage.setItem("note", JSON.stringify(thisArg));
+    }
 }

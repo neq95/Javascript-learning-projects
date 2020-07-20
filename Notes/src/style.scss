@@ -56,6 +56,10 @@ $main-font: "Indie Flower", cursive;
         background-color: #70ad5e;
         box-shadow: 0 5px #508142;
 
+        &:focus {
+            box-shadow: 0 5px #508142, 0 0 7px 4px #7e9dbc;
+        }
+
         &:hover {
             background-color: #98c48b;
         }
@@ -64,6 +68,10 @@ $main-font: "Indie Flower", cursive;
     &--remove {
         background-color: #d97065;
         box-shadow: 0 5px #d15144;
+
+        &:focus {
+            box-shadow: 0 5px #d15144, 0 0 7px 4px #7e9dbc;
+        }
 
         &:hover {
             background-color: #e3958d;
@@ -106,6 +114,10 @@ $main-font: "Indie Flower", cursive;
         right: 10px;
         outline: none;
         cursor: pointer;
+
+        &:focus {
+            box-shadow: 0 0 7px 4px rgba(0,0,0,0.4);
+        }
 
         &:hover {
             background-color: #da7469;
