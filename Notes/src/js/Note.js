@@ -1,7 +1,7 @@
 export default class Note {
-    constructor(id) {
-        this.title = "";
-        this.text = "";
+    constructor(id, title = "", text = "") {
+        this.title = title;
+        this.text = text;
         this.id = id;
     }
 
@@ -18,9 +18,5 @@ export default class Note {
         container.append(note);
 
         return note;
-    }
-
-    removeNote() {
-
     }
 }

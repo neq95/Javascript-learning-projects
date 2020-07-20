@@ -9,6 +9,7 @@ addButton.addEventListener("click", addNote);
 removeButton.addEventListener("click", removeNotes);
 
 let noteManager = new NoteManager();
+noteManager.renderNotesFromLocalStorage();
 
 function addNote() {
     noteManager.addNote();

@@ -9,28 +9,39 @@ export default class NoteManager {
 
         NoteManager.instance = this;
         NoteManager.exist = true;
-        this.notes = new Map();
     }
 
-    addNote() {
-        let id = getId();
-        let note = new Note(id);
-        this.notes.set(id, note);
-        console.log(this.notes);
+    addNote(existNote = {}, addToLocalStorage = true) {
+        let id = existNote.id || getId();
+        let note;
+
+        if(existNote) {
+            note = new Note(id, existNote.title, existNote.text)
+        } else {
+            note = new Note(id);
+        }
 
         let domNote = note.makeNote();
 
         addEventListenersToNote(domNote, note);
 
-        LocalStorage.addNewNoteToLocalStorage(note);
+        if(addToLocalStorage) {
+            LocalStorage.addNewNoteToLocalStorage(note);
+        }
     }
 
-    renderNotes() {
-
+    renderNotesFromLocalStorage() {
+        let notes = LocalStorage.getNotesFromLocalStorage();
+        notes.forEach(note => this.addNote(note, false));
     }
 
     removeNotes() {
+        LocalStorage.clear();
 
+        let notes = document.querySelectorAll(".note");
+        for(let note of notes) {
+            note.remove();
+        }
     }
 }
 
@@ -43,22 +54,22 @@ let getId = (function() {
 
 function addEventListenersToNote(domNote, note) {
     let button = domNote.querySelector(".note__button");
-    let noteManager = new NoteManager();
     button.addEventListener("click", () => {
-        console.log(noteManager.notes);
         domNote.remove();
-        LocalStorage.removeFromLocalStorage(note)
+        LocalStorage.removeFromLocalStorage(note);
     });
 
     let title = domNote.querySelector(".note__title");
     title.addEventListener("blur", () => {
-        domNote.title = title.textContent;
+        console.log("title")
+        note.title = title.textContent;
         if(note.title) LocalStorage.changeLocalStorage(note);
     })
 
     let text = domNote.querySelector(".note__text");
     text.addEventListener("blur", () => {
-        domNote.text = text.textContent;
+        console.log("text");
+        note.text = text.textContent;
         if(note.text) LocalStorage.changeLocalStorage(note);
     })
 }
